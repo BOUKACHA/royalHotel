@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontReservationController!
+{% endblock %}
+
+{% block body %}
+	<h1>Réservation</h1>
+	<p>Veuillez remplir le formulaire pour réserver la chambre
+		{{ chambre.numero }}</p>
+        <p>Prix : <span id="prix-nuit">{{ chambre.prix}}</span>/nuit</p>
+	<div class="row">
+		<div class="col-12 col-md-3"><img src="{{ asset('images/chambre/' ~ chambre.imageName)}}" alt="" class="img-fluid"></div>
+        <div class="col-12 col-md-9">{{ chambre.categorieChambre.nom}}</div>
+	</div>
+    <p>Total : <span id="tarif">0</span></p>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-dark">Réserver</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+<script>
+let dateArrivee = $("#reservation_dateArrivee");
+let dateDepart = $("#reservation_dateDepart");
+function calculTotal(){
+    $("#tarif").html("");
+    let arrivee = dateArrivee.val();
+    let date1 = new Date(arrivee);
+    
+    let depart = dateDepart.val();
+    let date2 = new Date(depart);
+    if(date2<date1){
+        alert("La date de départ doit après la date d'arrivée");
+    }else{
+        let nb = date2-date1;
+        let secondes = nb/1000;
+        let minutes = secondes/60
+        let heures = minutes/60
+        let nbJour = parseInt(heures/24);
+        let total = nbJour*$("#prix-nuit").html();
+        $("#tarif").html(total);
+    }
+}
+dateArrivee.on("change", function(event){
+    calculTotal()
+});
+dateDepart.on("change", function(event){
+    calculTotal()
+});
+</script>
+{% endblock %}

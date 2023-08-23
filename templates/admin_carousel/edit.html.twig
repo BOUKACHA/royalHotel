@@ -1,0 +1,14 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Modifier Carousel{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('app_admin_carousel_index') }}" class="btn btn-dark btn-sm mb-2">Retoure à la liste</a>
+    <div class="d-flex justify-content-between align-item-center">
+        <h1>Modifier Carousel</h1>
+        {{ include('admin_carousel/_delete_form.html.twig') }}
+    </div>
+        {{ include('admin_carousel/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+{% endblock %}

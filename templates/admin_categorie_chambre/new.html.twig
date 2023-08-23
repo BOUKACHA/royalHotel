@@ -1,0 +1,12 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Nouvelle Categorie Chambre{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('app_admin_categorie_chambre_index') }}" class="btn btn-dark btn-sm mb-3">Retour a la liste</a>
+    <h1>Créer une nouvelle Categorie</h1>
+
+    {{ include('admin_categorie_chambre/_form.html.twig') }}
+
+{% endblock %}

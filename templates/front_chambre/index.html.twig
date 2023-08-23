@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontChambreController!
+{% endblock %}
+
+{% block body %}
+	<h1>Nos chambres</h1>
+	{% for chambre in chambres %}
+		<div class="row mb-3">
+			<div class="col-12 col-md-3">
+                <img src="{{ asset('images/chambre/' ~ chambre.imageName) }}" alt="" class="img-fluid">
+            </div>
+			<div class="col-12 col-md-9">
+				<h2>{{ chambre.numero}}</h2>
+				<h3>{{ chambre.categorieChambre.nom}}</h3>
+                <p>{{ chambre.prix }}</p>
+                    <a href="{{ path('app_front_reservation', {id: chambre.id} ) }}" class="btn btn-dark my-3">Réserver</a>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}

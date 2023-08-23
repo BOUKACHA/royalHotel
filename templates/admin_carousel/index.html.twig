@@ -1,0 +1,53 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Carousel{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Carousel</h1>
+    <a href="{{ path('app_admin_carousel_new') }}" class="btn btn-success">Nouveau</a>
+</div>
+
+    <table class="table table-index table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>Ordre</th>
+                <th>Tag</th>
+                <th>Active</th>
+                <th>UpdatedAt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carousel in carousels %}
+            <tr>
+                <td>{{ carousel.id }}</td>
+                <td>
+                <a href="{{ asset('images/carousel/' ~ carousel.imageName) }}" data-lightbox="{{ carousel.imageName}}" {% if carousel.titre is not null %} data-title="{{carousel.titre}}" {% endif %}>
+                    <img src="{{ asset('images/carousel/' ~ carousel.imageName) }}" alt="" class="img-list">
+                </a>
+                </td>
+                <td>{{ carousel.titre }}</td>
+                <td>{{ carousel.texte }}</td>
+                <td>{{ carousel.rankNumber }}</td>
+                <td>{{ carousel.tag }}</td>
+                <td>{{ carousel.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ carousel.updatedAt ? carousel.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+                    <td>
+                    <a href="{{ path('app_admin_carousel_show', {'id': carousel.id}) }}"class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_carousel_edit', {'id': carousel.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9"><div class="text-start">Aucune entrée dans la BDD</div></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

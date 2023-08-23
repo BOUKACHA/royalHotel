@@ -1,0 +1,12 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Nouvelle Home{% endblock %}
+
+{% block body %}
+<div>
+    <a href="{{ path('app_admin_home_index') }}" class="btn btn-dark btn-sm mb-2">Retour à la liste</a>
+    <h1>Nouvelle Home</h1>
+</div>
+    {{ include('admin_home/_form.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}CategorieChambre{% endblock %}
+
+{% block body %}
+    <h1>CategorieChambre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie_chambre.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categorie_chambre.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ categorie_chambre.description }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ categorie_chambre.imageName }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ categorie_chambre.updatedAt ? categorie_chambre.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Pers</th>
+                <td>{{ categorie_chambre.pers }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ categorie_chambre.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ categorie_chambre.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_categorie_chambre_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_categorie_chambre_edit', {'id': categorie_chambre.id}) }}">edit</a>
+
+    {{ include('admin_categorie_chambre/_delete_form.html.twig') }}
+{% endblock %}

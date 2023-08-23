@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_home2') }}">Royal Hotel log</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100">
+            {# <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ path('app_home2') }}">Acceuil</a>
+            </li> #}
+            <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_front_chambre') }}">Nos Chambres</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Nos Evenements</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Reservation</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link " href="">Contact</a>
+            </li>
+            <li class="nav-item ms-lg-auto">
+            {% if app.user is null %}
+            <a class="nav-link " href="{{ path('app_register') }}">Inscription</a>
+            {% else %}
+            <a class="nav-link " href="{{ path('app_front_user') }}">Mon compte</a>
+            {% endif %}
+            </li>
+            {% if is_granted("ROLE_ADMIN")%}
+            <li class="nav-item">
+            <a class="nav-link " href="{{ path('app_admin') }}">Admin</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+            {% if is_granted("ROLE_USER")%}
+            <a class="nav-link " href="{{ path('app_login') }}">Déconnetion</a>
+            {% else %}
+            <a class="nav-link " href="{{ path('app_login') }}">Connexion</a>
+            {% endif %}
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav>

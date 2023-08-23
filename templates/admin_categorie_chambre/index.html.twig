@@ -1,0 +1,48 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Categorie Chambre {% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Categorie Chambre </h1>
+    <a href="{{ path('app_admin_categorie_chambre_new') }}" class="btn btn-success">Nouveau</a>
+</div>
+    <table class="table table-index table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                {# <th>Description</th> #}
+                <th>Image</th>
+                <th>Mise à jour</th>
+                <th>Pers</th>
+                <th>Active</th>
+                <th>Slug</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie_chambre in categorie_chambres %}
+            <tr>
+                <td>{{ categorie_chambre.id }}</td>
+                <td>{{ categorie_chambre.nom }}</td>
+                {# <td>{{ categorie_chambre.description }}</td> #}
+                <td>{{ categorie_chambre.imageName }}</td>
+                <td>{{ categorie_chambre.updatedAt ? categorie_chambre.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ categorie_chambre.pers }}</td>
+                <td>{{ categorie_chambre.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ categorie_chambre.slug }}</td>
+                <td>
+                    <a href="{{ path('app_admin_categorie_chambre_show', {'id': categorie_chambre.id}) }}"class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
+                    <a href="{{ path('app_admin_categorie_chambre_edit', {'id': categorie_chambre.id}) }}"class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucune entrée trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

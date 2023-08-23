@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+{# On rend l'integralité du formulaire en suivant le patron (type) #}
+    {# {{ form_widget(form) }} #}
+    {# On rend les lines de chaque propriétés#}
+<div class="d-flex flex-wrap justify-content-between mb-3">
+    <div class="col-12 col-md-2 d-flex align-items-center">{{ form_row(form.isActive) }}</div>
+    <div class="col-12 col-md-4">{{ form_row(form.rankNumber) }}</div>
+    <div class="col-12 col-md-6 text-end">{{ form_row(form.tag) }}</div>
+</div>
+    {{ form_row(form.titre) }}
+    {{ form_row(form.texte) }}
+    {{ form_row(form.imageFile) }}
+    <button class="btn btn btn-success">{{ button_label|default('Sauvegatder') }}</button>
+{{ form_end(form) }}

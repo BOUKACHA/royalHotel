@@ -1,0 +1,29 @@
+
+body{
+    .table-index{
+        tr{
+            th{
+                &:last-child{
+                    text-align: right;
+                }
+            }
+            td{
+                &:last-child{
+                    text-align: right;
+                }
+                .img-list{
+                    width: 100%;
+                    max-width: 150px;
+                }   
+            }
+        }
+    }
+    label{
+        &.required{
+            &:after{
+                content:"*";
+                color:red;
+            }
+        }
+    }
+}

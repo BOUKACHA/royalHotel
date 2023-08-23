@@ -1,0 +1,50 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Chambre{% endblock %}
+
+{% block body %}
+    <h1>Chambre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chambre.id }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ chambre.numero }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ chambre.imageName }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ chambre.updatedAt ? chambre.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ chambre.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Descreption</th>
+                <td>{{ chambre.descreption }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ chambre.prix }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ chambre.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_chambre_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_chambre_edit', {'id': chambre.id}) }}">edit</a>
+
+    {{ include('admin_chambre/_delete_form.html.twig') }}
+{% endblock %}
